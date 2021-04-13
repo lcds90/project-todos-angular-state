@@ -1,0 +1,23 @@
+<form class="container" [formGroup]="form" (ngSubmit)="login()">
+  <div class="field-container">
+    <input
+      formControlName="name"
+      class="field-input"
+      type="text"
+      placeholder="Usuário"
+    />
+    <label class="field-placeholder" for="inputUser">Usuário</label>
+  </div>
+  <div class="field-container">
+    <input
+      formControlName="email"
+      class="field-input"
+      type="email"
+      placeholder="E-mail"
+    />
+    <label class="field-placeholder" for="inputEmail">E-mail</label>
+  </div>
+  <div>
+    <button>Log In</button>
+  </div>
+</form>

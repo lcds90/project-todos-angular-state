@@ -1,0 +1,14 @@
+.main {
+    display:flex;
+    flex-direction: column;
+
+}
+
+a {
+    display:block;
+    background-color: var(--theme-first);
+    width:50%;
+    text-align:center;
+    margin-top:10px;
+    color:white;
+}
