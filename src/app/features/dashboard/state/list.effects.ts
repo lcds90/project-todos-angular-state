@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
+
 import { TodosService } from 'src/app/shared/services/todos.service';
 import * as fromListActions from './list.actions';
 
@@ -18,9 +19,9 @@ export class ListEffects {
       mergeMap(() =>
         this.todosService.getList(0).pipe(
           map((entities) => fromListActions.loadListSuccess({ entities })),
-          catchError(() => of(fromListActions.loadListFailure())),
-        ),
-      ),
-    ),
+          catchError(() => of(fromListActions.loadListFailure()))
+        )
+      )
+    )
   );
 }

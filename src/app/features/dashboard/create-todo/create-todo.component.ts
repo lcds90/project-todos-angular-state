@@ -16,13 +16,12 @@ export class CreateTodoComponent {
   list!: Todo[];
 
   constructor(
-    // private todosService: TodosService,
     private listService: ListService
   ) {
-    listService.list$.subscribe(list => this.list = list);
+    listService.list$.subscribe((list) => (this.list = list));
   }
 
   save() {
-    this.listService.create(this.titleControl.value)
+    this.listService.create(this.titleControl.value);
   }
 }

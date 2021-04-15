@@ -17,37 +17,11 @@ export class LastTodosComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // concetrando apenas no service
-    this.listService.getList(0);
-    this.listService.list$
-      .subscribe(list => this.list = list.slice(0, 10));
-
-    // implementação com hot observables
-/*     this.listService.list$.subscribe((list) => {
-      if (!list || !list.length) {
-        this.todosService
-          .getList(0)
-          .subscribe((list) => (this.listService.list = list));
-      } else {
-        this.list = list.slice(0, 10);
-      }
-    }); */
-
-    // melhorando req com usuarios
-    /* if(!this.listService.list){
-      this.todosService.getList(0)
-    .subscribe(list => {
-      this.list = list;
-      this.listService.list = list
-    })
-    } else {
-      this.list = this.listService.list.slice(0, 10)
-    } */
   }
 
   markAsDone(id: number) {}
 
   handleCreated(todo: Todo) {
-    this.list = [todo, ...this.list];
+
   }
 }

@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+
 import { ListState } from './list.reducer';
 
 export const selectListState = createFeatureSelector<ListState>('list');

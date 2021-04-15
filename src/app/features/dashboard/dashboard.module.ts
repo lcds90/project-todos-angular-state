@@ -4,13 +4,15 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ListService } from './services/list.service';
 import { LastTodosComponent } from './last-todos/last-todos.component';
-import { ListComponent } from './list/list.component';
 import { CreateTodoComponent } from './create-todo/create-todo.component';
-import { EffectsModule } from '@ngrx/effects';
+import { ListComponent } from './list/list.component';
+
+import { ListService } from './services/list.service';
+
 import { listReducer } from './state/list.reducer';
 import { ListEffects } from './state/list.effects';
 
@@ -28,8 +30,8 @@ import { ListEffects } from './state/list.effects';
         component: ListComponent,
       },
     ]),
-  StoreModule.forFeature('list', listReducer),
-  EffectsModule.forFeature([ListEffects])
+    StoreModule.forFeature('list', listReducer),
+    EffectsModule.forFeature([ListEffects]),
   ],
   declarations: [
     DashboardComponent,
@@ -37,9 +39,6 @@ import { ListEffects } from './state/list.effects';
     ListComponent,
     CreateTodoComponent,
   ],
-  providers: [
-    ListService,
-  ],
+  providers: [ListService],
 })
-export class DashboardModule {
-}
+export class DashboardModule {}
