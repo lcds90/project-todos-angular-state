@@ -6,13 +6,17 @@ import * as fromListActions from './list.actions';
 export interface ListState {
   entities: Todo[];
   loading: boolean;
+  loadingMore: boolean;
   error: boolean;
+  page: number;
 }
 
 export const listInitialState: ListState = {
   entities: [],
   loading: false,
+  loadingMore: false,
   error: false,
+  page: 0,
 };
 
 export const reducer = createReducer(
@@ -23,11 +27,15 @@ export const reducer = createReducer(
     (state) => ({
       ...state,
       loading: true,
-    })
-  ),
+    })),
+  on(fromListActions.loadMore, (state) => ({
+    ...state,
+    loadingMore: true,
+    page: state.page + 1
+  })),
   on(fromListActions.loadListSuccess, (state, { entities }) => ({
     ...state,
-    entities,
+    entities: [...state.entities, ...entities],
     loading: false,
   })),
   on(fromListActions.loadListFailure, (state) => ({

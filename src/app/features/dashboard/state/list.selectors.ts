@@ -14,7 +14,17 @@ export const selectListLoading = createSelector(
   (state: ListState) => state.loading
 );
 
+export const selectListLoadingMore = createSelector(
+  selectListState,
+  (state: ListState) => state.loadingMore
+);
+
 export const selectListError = createSelector(
   selectListState,
   (state: ListState) => state.error
+);
+
+export const selectListPage = createSelector(
+  selectListState,
+  (state: ListState) => state.page
 );

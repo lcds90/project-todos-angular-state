@@ -11,3 +11,5 @@ export const loadListSuccess = createAction(
 );
 
 export const loadListFailure = createAction('[API] Load List Failure');
+
+export const loadMore = createAction('[List] Load More')
