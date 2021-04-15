@@ -186,3 +186,24 @@ Pense que o Hot Observable é uma estação de rádio, ela sempre está emitindo
 [Redux](https://balta.io/blog/angular-redux-ngrx)
 
 Biblioteca NGRX
+
+#### Como funciona
+
+<p align="center">
+<img src="https://ngrx.io/generated/images/guide/store/state-management-lifecycle.png">
+</p>
+
+Reducer é a função que recebe uma action, estado atual e retorna um estado novo
+
+#### Padrão NGRX
+- Actions - Definida em duas partes
+```
+- 1 [Component] Fazer Ação
+```
+#### Memoized Selector
+
+Memoization é técnica para otimização de perfomance com selector
+
+[Ver este tutorial depois](https://www.youtube.com/watch?v=N_UQx8dPPkc)
+
+Uma boa prática quando trabalhando com NGRX, é NÃO REPETIR actions para ser mais facil debugar os arquivos e suas responsabilidades.
