@@ -23,6 +23,7 @@ export class ListEffects {
       ),
       withLatestFrom(this.store.pipe(select(fromListSelectors.selectListPage))),
       mergeMap(([, page]) =>
+      
         this.todosService.getList(page).pipe(
           map((entities) => fromListActions.loadListSuccess({ entities })),
           catchError(() => of(fromListActions.loadListFailure()))

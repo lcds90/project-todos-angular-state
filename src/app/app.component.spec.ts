@@ -1,35 +1,44 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  let fixture: ComponentFixture<AppComponent>;
+  let component: AppComponent
+
+  it("should return title", ()=> {
+    expect(component.title).toBe("Dashboard de Anotações")
+  })
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
       ],
       declarations: [
         AppComponent
       ],
-    }).compileComponents();
-  });
+    })
+    .compileComponents();
+  }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  beforeEach(()=> {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
 
-  it(`should have as title 'mat'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('mat');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+    // ativar changeDetection antes de cada teste
     fixture.detectChanges();
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('mat app is running!');
+  })
+
+  // teste de integração
+  it('should create', () => {
+    expect(component).toBeTruthy()
+  });
+  
+  it('should return title in H1', () => {
+    // manipulação do DOM
+    let h1 = fixture.debugElement.query(By.css('h1'))
+    expect((h1.nativeElement as Element).textContent).toBe("Dashboard de Anotações")
   });
 });

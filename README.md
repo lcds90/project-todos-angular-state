@@ -164,14 +164,14 @@ decClick(){
 ```
 Neste exemplo de presenter, como ele é o componente filho sua responsabilidade é emitir eventos para o pai atualizar o valor que manda para como input, gerando uma espécie de ciclo e cada um com sua responsabilidade. Não seria certo no eventos de click utilizar counter++ ou counter-- e o certo seria utiliar no component que tem como responsabilidade o dado que passa, garantindo consistência de dados.
 
-### Services
+#### Services
 Álém de serem utilizadas em requisições HTTP, podem também ser utilizadas para compartilhar a mesma intancia de classe (informação) em outro componente, modulo, etc.
 
 Podem ser providos tanto no module raiz da aplicação quanto em um determinado módulo.
 
 Uma tecnica de requisição necessária e útil é priorizar menos requisições no servidor possível, procure verificar durante a aplicação se o dado já foi recarregado ao inves de realizar toda vez a requisição sendo necessária somente na primeira vez do acesso.
 
-### Hot Observables
+#### Hot Observables
 
 [Hot Observables vs Cold Observables](https://medium.com/@marcelo.vismari/angular-rxjs-cold-e-hot-observable-557f04cb2e3d#:~:text=Pense%20que%20o%20Hot%20Observable,in%C3%ADcio%20independente%20de%20outras%20pessoas.)
 
@@ -181,13 +181,13 @@ Pense que o Hot Observable é uma estação de rádio, ela sempre está emitindo
 
 > Ao setar o valor, ele executa o next (create-todo) no Subject e todos que estão ouvindo o Observable irão receber as modificações (last-todos)
 
-### Arquitetura Redux
+#### Arquitetura Redux
 
 [Redux](https://balta.io/blog/angular-redux-ngrx)
 
 Biblioteca NGRX
 
-#### Como funciona
+##### Como funciona
 
 <p align="center">
 <img src="https://ngrx.io/generated/images/guide/store/state-management-lifecycle.png">
@@ -195,15 +195,54 @@ Biblioteca NGRX
 
 Reducer é a função que recebe uma action, estado atual e retorna um estado novo
 
-#### Padrão NGRX
+##### Padrão NGRX
 - Actions - Definida em duas partes
 ```
 - 1 [Component] Fazer Ação
 ```
-#### Memoized Selector
+##### Memoized Selector
 
 Memoization é técnica para otimização de perfomance com selector
 
 [Ver este tutorial depois](https://www.youtube.com/watch?v=N_UQx8dPPkc)
 
 Uma boa prática quando trabalhando com NGRX, é NÃO REPETIR actions para ser mais facil debugar os arquivos e suas responsabilidades.
+
+### Testes
+
+Padrão de teste na comunidade
+AAA = Arrange, Act, Assert
+[Vídeo sobre padrão](https://www.youtube.com/watch?v=wrLicPUsfTc&list=PL7uSdb_U7Fu8XlgXvBUOXyOE2Z_1B-jt9)
+
+### ControlValueAcessor
+
+[Projeto Stackblitz](https://stackblitz.com/edit/jv-control-value-accessor?file=src%2Fapp%2Fapp.component.ts)
+
+Age como uma ponte entre a API de formulários do Angular e um elemento nativo do DOM
+Interage com um FormControl, criado explicitamente ou não
+
+#### Métodos Obrigatórios quando implememtando
+
+> registerOnChange()
+Recebe uma função e avisa o componente pai de valor atualizado e passar elee
+
+> registerOnTouched()
+Recebe função e quer avisar que precisa atualizar o formControl do componente pai
+
+> setDisabledSate()
+Quando setar disabled no componente pai, irá refletir no componente filho
+
+> writeValue()
+Recebe informação do formControl do componente do pai.
+
+@Self -> Procurar somente no componente correspodente.
+@Optional -> Torna a injeção do NgControl opcional, evitando o erro.
+
+### Manipulação de Dom
+[Projeto Stackblitz](https://stackblitz.com/edit/angular-ivy-cqauuv)
+> ng-template
+Com viewContainerRef, podemos definir com createEmbbebedView para o template ser gerado dinamicamente
+* Por padrão sem ng-container, ele irá renderizar após todos os elementos da 
+
+> ng-container
+Serve como um slot
