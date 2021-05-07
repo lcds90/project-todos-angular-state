@@ -25,7 +25,7 @@ Projeto consiste em um jogo de memória com tecnologias referente ao front-end
 </p>
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/lcds90/game-memory/development/img/screenshot.png">
+<img src=">
 </p>
 
 ## :file_folder: Estrutura do projeto <a name = "structure"></a>
